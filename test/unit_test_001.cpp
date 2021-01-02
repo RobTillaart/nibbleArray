@@ -96,8 +96,7 @@ unittest(test_all)
     assertEqual(15, na.get(i));
     sum += na.get(i);
   }
-  assertEqual(7500, sum);
-
+  assertEqual(330, sum);  // not all 500 all summed!
 
 }
 
