@@ -78,8 +78,8 @@ unittest(test_all)
     na.set(i, x);
     assertEqual(x, na.get(i));
   }
-  assertEqual(255, na.set(42, 42));
-  assertEqual(255, na.get(42));
+  assertEqual(255, (int)na.set(42, 42));
+  assertEqual(255, (int)na.get(42));
 
   na.clear();
   for (int i = 0; i < 500; i += 23)
