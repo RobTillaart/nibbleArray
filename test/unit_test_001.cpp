@@ -78,8 +78,8 @@ unittest(test_all)
     na.set(i, x);
     assertEqual(x, na.get(i));
   }
-  assertEqual(255, (int)na.set(42, 42));
-  assertEqual(255, (int)na.get(42));
+  assertEqual(NIBBLEARRAY_ERROR_INDEX, na.set(542, 10));
+  assertEqual(NIBBLEARRAY_ERROR_INDEX, na.get(542));
 
   na.clear();
   for (int i = 0; i < 500; i += 23)
