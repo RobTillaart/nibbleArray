@@ -8,9 +8,10 @@
 
 Arduino library for a compact array of nibbles (4 bit units)
 
+
 ## Description
 
-A nibble is a 4 bit element, which can hold a value 0..15 (0..F in HEX).
+A nibble is a 4 bit element, which can hold a value 0..15 (0..F in HEX). It can be seen as an **uint4_t** type.
 
 The nibbleArray is an array that stores 2 nibbles in a byte therefor it is 
 twice as small as a normal array.
@@ -20,6 +21,7 @@ the UNO which can alloc max 255 bytes in one **malloc()** call.
 
 This **NIBBLEARRAY_MAXSIZE** can be defined compiletime "-D NIBBLEARRAY_MAXSIZE" 
 or one can adjust it in the library if other platforms can allocate more memory.
+
 
 ## Interface
 
@@ -34,13 +36,17 @@ otherwise 0xFF will be returned
 - **clear()** set all elements to 0;
 - **SetAll(value)** set all elements to value (0..15)
 
+
 ## Operation
 
 See examples
 
+
 ## Todo
 
+- todo's to issues
 - implement NIBBLEARRAY_ERROR_VALUE for set and setAll ??
 - allow larger allocations for non AVR, how?
 - setAll( f() ) - fill the array by calling a function n times?
-- todo's to issues
+- align interface with boolArray and bitArray.
+
