@@ -6,14 +6,14 @@
 //    DATE: 2020-06-21
 //     URL: https://github.com/RobTillaart/nibbleArray
 
-// 0.1.0    2020-06-21 initial version
-//
+
 #include "nibbleArray.h"
 
 nibbleArray na(500);
 
 uint32_t start, stop, d1, d2;
 volatile long x = 0;
+
 
 void setup()
 {
@@ -34,12 +34,14 @@ void setup()
   Serial.println("Done...");
 }
 
+
 void test_size()
 {
   Serial.print("Nibble array size:\t");
   Serial.println(na.size());
   delay(100);
 }
+
 
 void test_get()
 {
@@ -72,6 +74,7 @@ void test_get()
   delay(100);
 }
 
+
 void test_set()
 {
   Serial.println("\nset");
@@ -100,6 +103,7 @@ void test_set()
   Serial.println(d2 - d1);
   delay(100);
 }
+
 
 void test_clear()
 {
@@ -132,6 +136,7 @@ void test_clear()
   delay(100);
 }
 
+
 void test_setAll()
 {
   Serial.println("\nsetAll");
@@ -163,8 +168,10 @@ void test_setAll()
   delay(100);
 }
 
+
 void loop()
 {
 }
+
 
 // -- END OF FILE --
