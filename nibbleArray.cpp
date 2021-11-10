@@ -18,9 +18,13 @@
 #include "nibbleArray.h"
 
 
-nibbleArray::nibbleArray(uint16_t size)
+nibbleArray::nibbleArray(const uint16_t size)
 {
-  _size = min(NIBBLEARRAY_MAXSIZE, size);
+  _size = size;
+  if (_size > (uint16_t) NIBBLEARRAY_MAXSIZE)
+  {
+    _size = (uint16_t) NIBBLEARRAY_MAXSIZE;
+  }
   _bytes = (_size + 1)/2;
   arr = (uint8_t *) malloc(_bytes);
 }
@@ -35,26 +39,26 @@ nibbleArray::~nibbleArray()
 }
 
 
-uint8_t nibbleArray::get(const uint16_t idx)
+uint8_t nibbleArray::get(const uint16_t index)
 {
-  if (idx > _size)
+  if (index > _size)
   {
     return NIBBLEARRAY_ERROR_INDEX; // disable this check for more speed
   }
-  if (idx & 1) return arr[idx/2] & 0x0F;
-  return arr[idx/2] >> 4;
+  if (index & 1) return arr[index/2] & 0x0F;
+  return arr[index/2] >> 4;
 }
 
 
-uint8_t nibbleArray::set(const uint16_t idx, uint8_t value)
+uint8_t nibbleArray::set(const uint16_t index, uint8_t value)
 {
-  if (idx > _size)
+  if (index > _size)
   {
     return NIBBLEARRAY_ERROR_INDEX; // disable this check for more speed
   }
   uint8_t v = value & 0x0F;
-  if (idx & 1) arr[idx/2] = (arr[idx/2] & 0xF0) | v;
-  else arr[idx/2] = (arr[idx/2] & 0x0F) | (v << 4);
+  if (index & 1) arr[index/2] = (arr[index/2] & 0xF0) | v;
+  else arr[index/2] = (arr[index/2] & 0x0F) | (v << 4);
   return NIBBLEARRAY_OK;
 }
 

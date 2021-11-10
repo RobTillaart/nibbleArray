@@ -24,14 +24,14 @@
 class nibbleArray
 {
 public:
-  nibbleArray(uint16_t size);
+  nibbleArray(const uint16_t size);
   ~nibbleArray();
 
   //  return 0..F if ok
   //  returns 0xFF for index error.
-  uint8_t   get(const uint16_t idx);
+  uint8_t   get(const uint16_t index);
   //  returns 0xFF for index error.
-  uint8_t   set(const uint16_t idx, uint8_t value);
+  uint8_t   set(const uint16_t index, uint8_t value);
 
   uint16_t  size()   { return _size; };
   uint16_t  memory() { return _bytes; };
