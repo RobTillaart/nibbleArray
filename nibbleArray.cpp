@@ -10,7 +10,6 @@
 //  0.2.0   2020-06-21  refactor; #pragma once; removed pre 1.0 support
 //  0.2.1   2020-01-02  Arduino-CI + unit test
 //  0.2.2   2020-11-10  update Arduino-CI, badges
-//                      add getMaxSize();
 //                      fix bug in setAll();
 //                      add memory();
 
