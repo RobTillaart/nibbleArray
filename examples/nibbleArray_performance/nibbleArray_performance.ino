@@ -9,7 +9,12 @@
 
 #include "nibbleArray.h"
 
-nibbleArray na(500);
+// AVR UNO can handle only 510
+// ESP32 can do more but depends on RTOS limits
+
+#define NA_SIZE     500
+
+nibbleArray na(NA_SIZE);
 
 uint32_t start, stop, d1, d2;
 volatile long x = 0;
@@ -47,7 +52,7 @@ void test_get()
 {
   Serial.println("\nget");
   start = micros();
-  for (int i = 0; i < 500; i++)
+  for (int i = 0; i < na.size(); i++)
   {
     x += na.get(i);
   }
@@ -58,7 +63,7 @@ void test_get()
   delay(100);
 
   start = micros();
-  for (int i = 0; i < 500; i++)
+  for (int i = 0; i < na.size(); i++)
   {
     x += na.get(i);
     x += na.get(i);
@@ -79,7 +84,7 @@ void test_set()
 {
   Serial.println("\nset");
   start = micros();
-  for (int i = 0; i < 500; i++)
+  for (int i = 0; i < na.size(); i++)
   {
     na.set(i, 5);
   }
@@ -90,7 +95,7 @@ void test_set()
   delay(100);
 
   start = micros();
-  for (int i = 0; i < 500; i++)
+  for (int i = 0; i < na.size(); i++)
   {
     na.set(i, 5);
     na.set(i, 10);
@@ -126,7 +131,7 @@ void test_clear()
   Serial.print("DELTA:\t\t");
   Serial.println(d2 - d1);
   delay(100);
-  for (int i = 0; i < 500; i++)
+  for (int i = 0; i < na.size(); i++)
   {
     if (na.get(i) != 0)
     {
@@ -147,7 +152,7 @@ void test_setAll()
   d1 = stop - start;
   Serial.println(d1);
   delay(100);
-  for (int i = 0; i < 500; i++)
+  for (int i = 0; i < na.size(); i++)
   {
     if (na.get(i) != 1)
     {

@@ -26,15 +26,15 @@ nibbleArray::nibbleArray(const uint16_t size)
     _size = (uint16_t) NIBBLEARRAY_MAXSIZE;
   }
   _bytes = (_size + 1)/2;
-  arr = (uint8_t *) malloc(_bytes);
+  _arr = (uint8_t *) malloc(_bytes);
 }
 
 
 nibbleArray::~nibbleArray()
 {
-  if (arr != NULL)
+  if (_arr != NULL)
   {
-    free(arr);
+    free(_arr);
   }
 }
 
@@ -45,8 +45,8 @@ uint8_t nibbleArray::get(const uint16_t index)
   {
     return NIBBLEARRAY_ERROR_INDEX; // disable this check for more speed
   }
-  if (index & 1) return arr[index/2] & 0x0F;
-  return arr[index/2] >> 4;
+  if (index & 1) return _arr[index/2] & 0x0F;
+  return _arr[index/2] >> 4;
 }
 
 
@@ -57,15 +57,15 @@ uint8_t nibbleArray::set(const uint16_t index, uint8_t value)
     return NIBBLEARRAY_ERROR_INDEX; // disable this check for more speed
   }
   uint8_t v = value & 0x0F;
-  if (index & 1) arr[index/2] = (arr[index/2] & 0xF0) | v;
-  else arr[index/2] = (arr[index/2] & 0x0F) | (v << 4);
+  if (index & 1) _arr[index/2] = (_arr[index/2] & 0xF0) | v;
+  else _arr[index/2] = (_arr[index/2] & 0x0F) | (v << 4);
   return NIBBLEARRAY_OK;
 }
 
 
 void nibbleArray::clear()
 {
-  memset(arr, 0, (_size + 1)/2);
+  memset(_arr, 0, (_size + 1)/2);
 }
 
 
@@ -73,7 +73,7 @@ void nibbleArray::setAll(uint8_t value)
 {
   uint8_t v = value & 0x0F;
   v |= (v << 4);
-  memset(arr, v, (_size + 1)/2);
+  memset(_arr, v, (_size + 1)/2);
 }
 
 // -- END OF FILE --

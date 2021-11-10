@@ -40,7 +40,7 @@ public:
   void      setAll(uint8_t value);
 
 private:
-  uint8_t  *arr;
+  uint8_t  * _arr;
   uint16_t _size;
   uint8_t  _bytes = 0;
 };

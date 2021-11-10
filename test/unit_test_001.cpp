@@ -52,6 +52,7 @@ unittest(test_all)
 
   nibbleArray na(500);
   assertEqual(500, na.size());
+  assertEqual(250, na.memory());
 
   fprintf(stderr, "get / set\n");
   for (int i = 0; i < 500; i += 23)
